@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>MP Arcade Game</title>
+        <link href="/webjars/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <link href="/css/main.css" rel="stylesheet">
+        <script src="/webjars/jquery/jquery.min.js"></script>
+        <!--<script src="/webjars/sockjs-client/sockjs.min.js"></script>
+        <script src="/webjars/stomp-websocket/stomp.min.js"></script>-->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+        <!--<script src="https://unpkg.com/hotkeys-js/dist/hotkeys.min.js"></script>-->
+        <script src="http://cdn.jsdelivr.net/npm/phaser@3.8.0/dist/phaser.min.js"></script>
+        <script src="/js/game.js"></script>
+        <script src="/js/network.js"></script>
+        <script src="/js/app.js"></script>
+    </head>
+    <body>
+        <noscript><h2 style="color: #ff0000">Seems your browser doesn't support Javascript! Websocket relies on Javascript being
+            enabled. Please enable
+            Javascript and reload this page!</h2></noscript>
+        <div id="main_content" class="container">
+            <div class="row">
+                <div class="col-md-6">
+                </div>
+                <div class="col-md-6">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-10">
+                    <div id="game-area" ></div>
+                </div>
+                <div class="col-md-2">
+                    <form class="form-inline">
+                        <div class="form-group">
+                            <button id="disconnect" class="btn btn-default" type="submit" disabled="disabled">Disconnect</button>
+                        </div>
+                    </form>
+                    <table id="conversation" class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>
+                                    Players
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody id="online_players">
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <table id="conversation" class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>
+                                    Console
+                                    <div class="input-group">
+                                        <textarea class="form-control custom-control" id="chat_input"  rows="3" style="resize:none"></textarea>
+                                        <span class="input-group-addon btn btn-primary" id="send_chat">Send</span>
+                                    </div>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody id="chat_output">
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <!-- Modal -->
+        <div class="modal fade" id="login_modal" tabindex="-1" data-backdrop="static" data-keyboard="false" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="myModalLabel">Login</h4>
+                    </div>
+                    <form method="get">
+                        <div class="modal-body">
+                            <div class="alert alert-danger" role="alert" id="login_error">
+                                <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                                <span class="sr-only">Error:</span>
+                                <span id="error_message">Enter a valid email address</span>
+                            </div>
+                            <div class="input-group">
+                                <span class="input-group-addon" id="basic-addon1">Playername</span>
+                                <input type="text" id="playername" class="form-control" name="pin" placeholder="playername" aria-describedby="basic-addon1">
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button id="connect" type="submit" value="Submit" class="btn btn-primary pull-right">Play online</button>
+                            <button id="play_offline" type="submit" value="Submit" class="btn btn-primary pull-left">Play offline</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
