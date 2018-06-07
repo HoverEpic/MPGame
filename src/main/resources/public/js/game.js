@@ -55,6 +55,9 @@ function preload()
     this.load.image('bomb', '/assets/bomb.png');
     this.load.spritesheet('dude', '/assets/dude.png', {frameWidth: 32, frameHeight: 48});
 
+    //map
+    this.load.image('map', '/assets/tiny-rpg-town-files/game_map.png');
+
     // char 1
     this.load.spritesheet('alex', '/assets/topdown_shooter/characters/1.png', {frameWidth: 16, frameHeight: 21});
     this.load.spritesheet('alex_north', '/assets/topdown_shooter/characters/1_north.png', {frameWidth: 20, frameHeight: 24});
@@ -87,15 +90,16 @@ function preload()
 
 function create()
 {
-    this.add.image(400, 300, 'sky');
+//    this.add.image(400, 300, 'sky');
+    this.add.image(400, 300, 'map');
 
     platforms = this.physics.add.staticGroup();
 
-    platforms.create(400, 568, 'ground').setScale(2).refreshBody();
+//    platforms.create(400, 568, 'ground').setScale(2).refreshBody();
 
-    platforms.create(600, 400, 'ground');
-    platforms.create(50, 250, 'ground');
-    platforms.create(750, 220, 'ground');
+//    platforms.create(600, 400, 'ground');
+//    platforms.create(50, 250, 'ground');
+//    platforms.create(750, 220, 'ground');
 
     player = this.physics.add.sprite(playerX, playerY, 'alex');
 

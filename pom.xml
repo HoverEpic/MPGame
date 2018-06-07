@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.epic</groupId>
-    <artifactId>MoveThis</artifactId>
+    <artifactId>MPGame</artifactId>
     <version>1.0.0</version>
 
     <parent>
@@ -68,5 +68,5 @@
             </plugin>
         </plugins>
     </build>
-    <name>MoveThis</name>
+    <name>MPGame</name>
 </project>
