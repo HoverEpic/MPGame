@@ -44,7 +44,7 @@ public class NetworkHandler extends TextWebSocketHandler {
     @Override
     public void afterConnectionEstablished(WebSocketSession session) throws Exception {
         // The WebSocket has been opened
-        System.out.println("Session " + session.getId() + " opened!");
+        System.out.println("Session " + session.getId() + " (" + session.getRemoteAddress().getAddress().getHostAddress() + ") opened!");
         // create the player object
         Player player = App.getInstance().getGameManager().getEntitiesManager().createNewPlayer(session);
         player.sendChatMessage(null, "You are now connected");
@@ -53,7 +53,7 @@ public class NetworkHandler extends TextWebSocketHandler {
     @Override
     public void afterConnectionClosed(WebSocketSession session, CloseStatus status) throws Exception {
         // The WebSocket has been closed
-        System.out.println("Session " + session.getId() + " closed!");
+        System.out.println("Session " + session.getId() + " (" + session.getRemoteAddress().getAddress().getHostAddress() + ") closed!");
         // remove the player object
         Player player = App.getInstance().getGameManager().getEntitiesManager().removePlayer(session);
         if (player != null) {
@@ -106,6 +106,7 @@ public class NetworkHandler extends TextWebSocketHandler {
                 player.setIsLoggedIn(true);
                 player.setName(((PlayerJoin) packet).getName());
                 player.sendWebSocketMessage(new JoinResponse(JoinResponse.JOIN_STATUS_SUCCESS));
+                System.out.println("Player " + player.getName() + " is on session " + session.getId() + " (" + session.getRemoteAddress().getAddress().getHostAddress() + ")");
                 StartGame startGamePacket = new StartGame(player.getId(), "Death by Tomatos !");
                 player.setX(WorldMap.spawnX);
                 player.setY(WorldMap.spawnY);

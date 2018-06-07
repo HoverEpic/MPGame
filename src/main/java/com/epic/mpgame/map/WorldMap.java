@@ -13,10 +13,11 @@ import java.util.List;
  * @author Epic
  *
  */
-// example map :
+// example map data :
 //
 // 1 = non walkable
 // 0 = walkable
+//
 // 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
 // 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1
 // 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1
@@ -37,7 +38,10 @@ public class WorldMap {
 
     private String name;
     private File background;
-    private List<String> areas;
+
+    //Placeholders
+    public static final int width = 800;
+    public static final int heigh = 600;
 
     public static final int spawnX = 100;
     public static final int spawnY = 450;
